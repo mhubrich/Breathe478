@@ -11,7 +11,7 @@ const { animate, linear } = popmotion;
  * @param {Object}  circle  HTML element to hold the circle.
  */
 class Animator {
-    
+
     constructor(label, max, title, circle) {
       this._label = label;
       this._max = max;
@@ -58,4 +58,34 @@ class Animator {
     }
   
     toPercent(value) {}
+  }
+
+  class InAnimator extends Animator {
+    constructor(label, max, title, circle) {
+      super(label, max, title, circle); 
+    }
+  
+    toPercent(value) {
+      return Math.round(100 * (1 - (value / this._max))) + '%';
+    }
+  }
+  
+  class HoldAnimator extends Animator {
+    constructor(label, max, title, circle) {
+      super(label, max, title, circle); 
+    }
+  
+    toPercent(value) {
+      return '100%';
+    }
+  }
+  
+  class OutAnimator extends Animator {
+    constructor(label, max, title, circle) {
+      super(label, max, title, circle); 
+    }
+  
+    toPercent(value) {
+      return Math.round(100 * (value / this._max)) + '%';
+    }
   }

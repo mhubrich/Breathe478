@@ -4,22 +4,22 @@ const { animate, linear } = popmotion;
 /**
  * An abstract class to handle animations.
  *
- * It manages two animations: 1) update the text countdown, and 2) animate the circle.
+ * It manages two animations: 1) update the text instruction, and 2) animate the circle.
  * The Animator is started by a Controller, and through a callback function,
  * the Controller gets notified by the Animator when the animations are completed.
  */
 class Animator {
 
     /**
-     * @param {String}  label       The label to use for the corresponding phase (e.g. breathe in).
-     * @param {Number}  duration    Duration of the animation.
-     * @param {Object}  title       HTML element to hold the label string.
-     * @param {Object}  circle      HTML element to hold the circle.
+     * @param {String}  label         The label to use for the corresponding phase (e.g. breathe in).
+     * @param {Number}  duration      Duration of the animation.
+     * @param {Object}  instruction   HTML element to hold the label string.
+     * @param {Object}  circle        HTML element to hold the circle.
      */
-    constructor(label, duration, title, circle) {
+    constructor(label, duration, instruction, circle) {
       this._label = label;
       this._duration = duration;
-      this._title = title;
+      this._instruction = instruction;
       this._circle = circle;
       this._playback = undefined;
     }
@@ -70,24 +70,24 @@ class Animator {
     /**
      * Called at every update step to refresh the animation.
      *
-     * Will call functions to update title and circle seperately.
+     * Will call functions to update instruction and circle seperately.
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      */
     update(value) {
-      this.updateTitle(value);
+      this.updateInstruction(value);
       this.updateCircle(value);
     }
   
     /**
-     * Updates the title holding the label and countdown number.
+     * Updates the instruction holding the label and countdown number.
      *
-     * Simply sets the HTML of the title to a concatenated value of label + countdown.
+     * Simply sets the HTML of the instruction to a concatenated value of label + countdown.
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      */
-    updateTitle(value) {
-      this._title.innerHTML = this._label + Math.ceil(value);
+    updateInstruction(value) {
+      this._instruction.innerHTML = this._label + Math.ceil(value);
     }
   
     /**
@@ -116,8 +116,8 @@ class Animator {
 }
 
 class InAnimator extends Animator {
-    constructor(label, duration, title, circle) {
-      super(label, duration, title, circle); 
+    constructor(label, duration, instruction, circle) {
+      super(label, duration, instruction, circle); 
     }
   
     /**
@@ -135,8 +135,8 @@ class InAnimator extends Animator {
 }
   
 class HoldAnimator extends Animator {
-    constructor(label, duration, title, circle) {
-      super(label, duration, title, circle); 
+    constructor(label, duration, instruction, circle) {
+      super(label, duration, instruction, circle); 
     }
   
     /**
@@ -154,8 +154,8 @@ class HoldAnimator extends Animator {
 }
   
 class OutAnimator extends Animator {
-    constructor(label, duration, title, circle) {
-      super(label, duration, title, circle); 
+    constructor(label, duration, instruction, circle) {
+      super(label, duration, instruction, circle); 
     }
   
     /**

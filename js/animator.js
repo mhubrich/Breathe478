@@ -99,8 +99,8 @@ class Animator {
      */
     updateCircle(value) {
       const percent = this.toPercent(value);
-      this._circle.style.width = percent;
-      this._circle.style.height = percent;
+      this._circle.style.width = percent + 'vmin';
+      this._circle.style.height = percent + 'vmin';
     }
   
     /**
@@ -110,7 +110,7 @@ class Animator {
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      * 
-     * @return {String}         Percentage value including the percentage sign (%).
+     * @return {Number}         Percentage value between [0, 100].
      */
     toPercent(value) {}
 }
@@ -127,10 +127,10 @@ class InAnimator extends Animator {
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      * 
-     * @return {String}         Percentage value including the percentage sign (%).
+     * @return {Number}         Percentage value between [0, 100].
      */
     toPercent(value) {
-      return Math.round(100 * (1 - (value / this._duration))) + '%';
+      return Math.round(100 * (1 - (value / this._duration)));
     }
 }
   
@@ -142,14 +142,14 @@ class HoldAnimator extends Animator {
     /**
      * Converts the interpolated value to a percentage value.
      *
-     * For the hold animation, we return a constant string of "100%".
+     * For the hold animation, we return a constant value of 100.
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      * 
-     * @return {String}         Always returns the string "100%".
+     * @return {Number}         Always returns a value of 100.
      */
     toPercent(value) {
-      return '100%';
+      return 100;
     }
 }
   
@@ -163,9 +163,9 @@ class OutAnimator extends Animator {
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      * 
-     * @return {String}         Percentage value including the percentage sign (%).
+     * @return {Number}         Percentage value between [0, 100].
      */
     toPercent(value) {
-      return Math.round(100 * (value / this._duration)) + '%';
+      return Math.round(100 * (value / this._duration));
     }
 }

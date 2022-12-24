@@ -27,28 +27,37 @@
       this._currentAnimator = this._animators.pop();
       if (this._currentAnimator) {
         this._currentAnimator.start(this);
+      } else {
+        this.complete();
       }
     }
   
     /**
      * Called one time before the first animation starts.
+     * 
+     * Toggles the UI to display the animation view.
      */
-    setup() {}
+    setup() {
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('animation').style.display = 'flex';
+    }
   
     /**
-     * Called one time after the last animation completes.
+     * Called one time after the last animation completes or if an animation stops.
+     * 
+     * Toggles the UI to display the landing page view.
      */
-    cleanup() {}
+    cleanup() {
+      document.getElementById('animation').style.display = 'none';
+      document.getElementById('landing').style.display = 'flex';
+    }
   
     /**
      * Starts the sequence of animations.
      */
     start() {
       this.setup();
-  
       this.next();
-  
-      this.cleanup();
     }
   
     /**
@@ -58,5 +67,13 @@
       if (this._currentAnimator) {
         this._currentAnimator.stop();
       }
+      this.cleanup();
+    }
+
+    /**
+     * Called after all animations complete successfully.
+     */
+    complete() {
+      this.cleanup();
     }
 }

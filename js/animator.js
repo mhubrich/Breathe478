@@ -13,13 +13,11 @@ class Animator {
     /**
      * @param {String}  label         The label to use for the corresponding phase (e.g. breathe in).
      * @param {Number}  duration      Duration of the animation.
-     * @param {Object}  instruction   HTML element to hold the label string.
-     * @param {Object}  circle        HTML element to hold the circle.
+     * @param {Object}  circle        HTML element to hold the circle and label string.
      */
-    constructor(label, duration, instruction, circle) {
+    constructor(label, duration, circle) {
       this._label = label;
       this._duration = duration;
-      this._instruction = instruction;
       this._circle = circle;
       this._playback = undefined;
     }
@@ -80,14 +78,14 @@ class Animator {
     }
   
     /**
-     * Updates the instruction holding the label and countdown number.
+     * Updates the element holding the label and countdown value.
      *
-     * Simply sets the HTML of the instruction to a concatenated value of label + countdown.
+     * Simply sets the inner HTML of `circle` to a concatenated string of label + countdown.
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      */
     updateInstruction(value) {
-      this._instruction.innerHTML = this._label + Math.ceil(value);
+      this._circle.innerHTML = this._label + Math.ceil(value);
     }
   
     /**
@@ -116,8 +114,8 @@ class Animator {
 }
 
 class InAnimator extends Animator {
-    constructor(label, duration, instruction, circle) {
-      super(label, duration, instruction, circle); 
+    constructor(label, duration, circle) {
+      super(label, duration, circle); 
     }
   
     /**
@@ -135,8 +133,8 @@ class InAnimator extends Animator {
 }
   
 class HoldAnimator extends Animator {
-    constructor(label, duration, instruction, circle) {
-      super(label, duration, instruction, circle); 
+    constructor(label, duration, circle) {
+      super(label, duration, circle); 
     }
   
     /**
@@ -154,8 +152,8 @@ class HoldAnimator extends Animator {
 }
   
 class OutAnimator extends Animator {
-    constructor(label, duration, instruction, circle) {
-      super(label, duration, instruction, circle); 
+    constructor(label, duration, circle) {
+      super(label, duration, circle); 
     }
   
     /**

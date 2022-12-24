@@ -20,6 +20,12 @@
     height: 0vmin;
     background: lightblue;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    white-space: nowrap;
+    font-size: xx-large;
     z-index: -1;
 }
 

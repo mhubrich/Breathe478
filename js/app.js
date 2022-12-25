@@ -10,10 +10,11 @@
  * @param {Number} repeat        Number of times to cycle through all animations.
  */
 function start(breatheIn=4, hold=7, breatheOut=8, repeat=3) {
+    const instruction = document.getElementById('instruction');
     const circle = document.getElementById('circle');
-    const inAnimator = new InAnimator('Breathe in for ', breatheIn, circle);
-    const holdAnimator = new HoldAnimator('Hold breath for ', hold, circle);
-    const outAnimator = new OutAnimator('Breathe out for ', breatheOut, circle);
+    const inAnimator = new InAnimator('Breathe in for ', breatheIn, instruction, circle);
+    const holdAnimator = new HoldAnimator('Hold breath for ', hold, instruction, circle);
+    const outAnimator = new OutAnimator('Breathe out for ', breatheOut, instruction, circle);
     const controller = new Controller([inAnimator, holdAnimator, outAnimator], repeat);
     const btn_stop = document.getElementById('stop');
     btn_stop.addEventListener('click', () => controller.stop());

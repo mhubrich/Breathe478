@@ -97,6 +97,14 @@ html {
 /* Stop button style */
 #stop {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 10px;
+    left: 10px;
+    color: var(--light-secondary);
+    opacity: 0.5;
+    font-size: xxx-large;
+    cursor: pointer;
+}
+
+#stop:hover {
+    opacity: 1;
 }

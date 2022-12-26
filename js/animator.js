@@ -12,15 +12,18 @@ class Animator {
      * @param {Object}  instruction   HTML element to hold the label string.
      * @param {Object}  circle        HTML element to hold the circle.
      */
-    constructor(duration, instruction, circle) {
+    constructor(label, from, to, duration, instruction, circle) {
+      if (new.target === Animator) {
+        throw new TypeError('Cannot construct instance of abstract class ' + new.target.name);
+      }
+      this._label = label;
+      this._from = from;
+      this._to = to;
       this._duration = duration;
       this._instruction = instruction;
       this._circle = circle;
       this._playback = undefined;
       this._interval = undefined;
-      this._label = undefined;
-      this._from = undefined;
-      this._to = undefined;
     }
   
     /**
@@ -99,34 +102,25 @@ class Animator {
       this.updateInstruction(this._duration);
     }
   
-    updateInstruction(duration) {
-      this._instruction.innerHTML = this._label + ' ' + duration;
+    updateInstruction(counter) {
+      this._instruction.innerHTML = this._label + ' ' + counter;
     }
 }
 
 class InAnimator extends Animator {
     constructor(duration, instruction, circle) {
-      super(duration, instruction, circle);
-      this._label = 'Breathe in for';
-      this._from = '0vmin';
-      this._to = '100vmin';
+      super('Breathe in for', '0vmin', '100vmin', duration, instruction, circle);
     }
 }
   
 class HoldAnimator extends Animator {
     constructor(duration, instruction, circle) {
-      super(duration, instruction, circle);
-      this._label = 'Hold breath for';
-      this._from = '100vmin';
-      this._to = '100vmin';
+      super('Hold breath for', '100vmin', '100vmin', duration, instruction, circle);
     }
 }
   
 class OutAnimator extends Animator {
     constructor(duration, instruction, circle) {
-      super(duration, instruction, circle);
-      this._label = 'Breathe out for';
-      this._from = '100vmin';
-      this._to = '0vmin';
+      super('Breathe out for', '100vmin', '0vmin', duration, instruction, circle);
     }
 }

@@ -43,7 +43,8 @@ html {
 
 #circle p {
     color: var(--light-primary);
-    font-size: xx-large;
+    font-weight: lighter;
+    font-size: xxx-large;
 }
 
 /* Start button style */
@@ -61,8 +62,8 @@ html {
 .button a {
     position: relative;
     color: var(--light-secondary);
-    font-size: 2em;
-    font-weight: lighter;
+    font-size: xx-large;
+    font-weight: normal;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;

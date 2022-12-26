@@ -2,14 +2,17 @@
  * An abstract class to handle animations.
  *
  * It manages two animations: 1) update the text instruction, and 2) animate the circle.
- * The Animator is started by a Controller, and through a callback function,
- * the Controller gets notified by the Animator when the animations are completed.
+ * The `Animator` is started by a `Controller`, and through a callback function,
+ * the `Controller` gets notified by the `Animator` when the animations are completed.
  */
 class Animator {
 
     /**
+     * @param {String}  label         The text instruction (e.g. 'breate in').
+     * @param {Number}  from          Starting size of the circle animation.
+     * @param {Number}  to            Ending size of the circle animation.
      * @param {Number}  duration      Duration of the animation in seconds.
-     * @param {Object}  instruction   HTML element to hold the label string.
+     * @param {Object}  instruction   HTML element to hold the instruction.
      * @param {Object}  circle        HTML element to hold the circle.
      */
     constructor(label, from, to, duration, instruction, circle) {
@@ -29,13 +32,9 @@ class Animator {
     /**
      * Starts playback of the two animations.
      *
-     * Uses the popmotion library to create linear keyframes between [duration, 0] and sends the
-     * interpolated values to the onUpdate function for rendering.
+     * Simply calls start of the two animations (instruction and circle) separately.
      *
-     * @fires   onUpdate
-     * @fires   onComplete
-     *
-     * @param {Object} controller   Reference to the Controller.
+     * @param {Object} controller   Reference to the `Controller`.
      */
     start(controller) {
       this.animateCircle(controller);
@@ -55,7 +54,7 @@ class Animator {
     /**
      * Called when the animation finishes. 
      *
-     * The Animator calls back to the Controller to notify that the animation finished.
+     * The `Animator` calls back to the `Controller` to notify that the animation finished.
      *
      * @param {Object} controller   Reference to the Controller.
      */
@@ -65,11 +64,13 @@ class Animator {
     }
   
     /**
-     * Updates the circle.
+     * Animates the circle.
      *
-     * Simply sets the width and height of the circle to a new value.
+     * Uses the native Web Animation API to change width and height of the circle.
+     * 
+     * @fires   complete
      *
-     * @param {Number} value    Interpolated value between [duration, 0].
+     * @param {Object} controller   Reference to the `Controller`.
      */
     animateCircle(controller) {
       const keyframes = new KeyframeEffect(
@@ -87,11 +88,9 @@ class Animator {
     }
 
     /**
-     * Updates the instruction holding the label and countdown number.
+     * Animates the instruction.
      *
-     * Simply sets the HTML of the instruction to a concatenated value of label + countdown.
-     *
-     * @param {Number} value    Interpolated value between [duration, 0].
+     * Updates the countdown of the instruction evert 1 second.
      */
      animateInstruction() {
       this._interval = setInterval(() => {
@@ -101,7 +100,14 @@ class Animator {
       // set initial string because `setInterval` triggers first time only after 1sec
       this.updateInstruction(this._duration);
     }
-  
+    
+    /**
+     * Updates the instruction.
+     * 
+     * Sets the HTML of the instruction to a concatenated string of label + `counter`.
+     * 
+     * * @param {Number} counter  Numeric countdown value.
+     */
     updateInstruction(counter) {
       this._instruction.innerHTML = this._label + ' ' + counter;
     }

@@ -21,5 +21,6 @@ function start(breatheIn=4, hold=7, breatheOut=8, repeat=3) {
     controller.start();
 }
 
+// Add click listener to start button
 const btn_start = document.getElementById('start');
 btn_start.addEventListener('click', () => start());

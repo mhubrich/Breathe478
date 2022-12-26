@@ -24,23 +24,24 @@ html {
     z-index: 1;
 }
 
+/* Initially, hide animation view */
 #animation {
     display: none;
 }
 
+/* Circle to be animated */
 #circle {
-    position: absolute;
-    width: 0vmin;
-    height: 0vmin;
+    width: 0;
+    height: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     white-space: nowrap;
     background: var(--light-secondary);
     border-radius: 50%;
-    z-index: -1;
 }
 
+/* Instruction to be animated */
 #circle p {
     color: var(--light-primary);
     font-weight: lighter;

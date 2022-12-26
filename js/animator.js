@@ -115,18 +115,18 @@ class Animator {
 
 class InAnimator extends Animator {
     constructor(duration, instruction, circle) {
-      super('Breathe in for', '0vmin', '100vmin', duration, instruction, circle);
+      super('Breathe in for', '0vmin', '80vmin', duration, instruction, circle);
     }
 }
   
 class HoldAnimator extends Animator {
     constructor(duration, instruction, circle) {
-      super('Hold breath for', '100vmin', '100vmin', duration, instruction, circle);
+      super('Hold breath for', '80vmin', '80vmin', duration, instruction, circle);
     }
 }
   
 class OutAnimator extends Animator {
     constructor(duration, instruction, circle) {
-      super('Breathe out for', '100vmin', '0vmin', duration, instruction, circle);
+      super('Breathe out for', '80vmin', '0vmin', duration, instruction, circle);
     }
 }

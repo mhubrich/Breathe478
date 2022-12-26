@@ -18,6 +18,10 @@
     position: absolute;
     width: 0vmin;
     height: 0vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
     background: lightblue;
     border-radius: 50%;
     z-index: -1;

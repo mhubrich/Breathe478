@@ -1,6 +1,3 @@
-const { animate, linear } = popmotion;
-
-
 /**
  * An abstract class to handle animations.
  *
@@ -11,17 +8,19 @@ const { animate, linear } = popmotion;
 class Animator {
 
     /**
-     * @param {String}  label         The label to use for the corresponding phase (e.g. breathe in).
-     * @param {Number}  duration      Duration of the animation.
+     * @param {Number}  duration      Duration of the animation in seconds.
      * @param {Object}  instruction   HTML element to hold the label string.
      * @param {Object}  circle        HTML element to hold the circle.
      */
-    constructor(label, duration, instruction, circle) {
-      this._label = label;
+    constructor(duration, instruction, circle) {
       this._duration = duration;
       this._instruction = instruction;
       this._circle = circle;
       this._playback = undefined;
+      this._interval = undefined;
+      this._label = undefined;
+      this._from = undefined;
+      this._to = undefined;
     }
   
     /**
@@ -36,15 +35,18 @@ class Animator {
      * @param {Object} controller   Reference to the Controller.
      */
     start(controller) {
-      this._playback = animate({
-        from: this._duration,
-        to: 0,
-        duration: this._duration * 1000,
-        type: 'keyframes',
-        ease: linear,
-        onUpdate: latest => this.update(latest),
-        onComplete: () => this.complete(controller)
-      });
+      this.animateCircle(controller);
+      this.animateInstruction();
+    }
+
+    /**
+     * Stops the animation.
+     */
+     stop() {
+      if (this._playback) {
+        clearInterval(this._interval);
+        this._playback.cancel();
+      }
     }
   
     /**
@@ -55,39 +57,8 @@ class Animator {
      * @param {Object} controller   Reference to the Controller.
      */
     complete(controller) {
+      clearInterval(this._interval);
       controller.next();
-    }
-  
-    /**
-     * Stops the animation.
-     */
-    stop() {
-      if (this._playback) {
-        this._playback.stop();
-      }
-    }
-  
-    /**
-     * Called at every update step to refresh the animation.
-     *
-     * Will call functions to update instruction and circle seperately.
-     *
-     * @param {Number} value    Interpolated value between [duration, 0].
-     */
-    update(value) {
-      this.updateInstruction(value);
-      this.updateCircle(value);
-    }
-  
-    /**
-     * Updates the instruction holding the label and countdown number.
-     *
-     * Simply sets the HTML of the instruction to a concatenated value of label + countdown.
-     *
-     * @param {Number} value    Interpolated value between [duration, 0].
-     */
-    updateInstruction(value) {
-      this._instruction.innerHTML = this._label + Math.ceil(value);
     }
   
     /**
@@ -97,75 +68,65 @@ class Animator {
      *
      * @param {Number} value    Interpolated value between [duration, 0].
      */
-    updateCircle(value) {
-      const percent = this.toPercent(value);
-      this._circle.style.width = percent + 'vmin';
-      this._circle.style.height = percent + 'vmin';
+    animateCircle(controller) {
+      const keyframes = new KeyframeEffect(
+        this._circle, 
+        {
+          width: [this._from, this._to],
+          height: [this._from, this._to],
+        }, {
+          duration: this._duration * 1000,
+          fill: 'both',
+      });
+      this._playback = new Animation(keyframes);
+      this._playback.addEventListener('finish', () => this.complete(controller));
+      this._playback.play();
     }
-  
+
     /**
-     * Converts the interpolated value to a percentage value.
+     * Updates the instruction holding the label and countdown number.
      *
-     * @abstract
+     * Simply sets the HTML of the instruction to a concatenated value of label + countdown.
      *
      * @param {Number} value    Interpolated value between [duration, 0].
-     * 
-     * @return {Number}         Percentage value between [0, 100].
      */
-    toPercent(value) {}
+     animateInstruction() {
+      this._interval = setInterval(() => {
+        let counter = Math.round((1 - this._playback.effect.getComputedTiming().progress) * this._duration);
+        this.updateInstruction(counter);
+      }, 1000);
+      // set initial string because `setInterval` triggers first time only after 1sec
+      this.updateInstruction(this._duration);
+    }
+  
+    updateInstruction(duration) {
+      this._instruction.innerHTML = this._label + ' ' + duration;
+    }
 }
 
 class InAnimator extends Animator {
-    constructor(label, duration, instruction, circle) {
-      super(label, duration, instruction, circle); 
-    }
-  
-    /**
-     * Converts the interpolated value to a percentage value.
-     *
-     * The returned percentage value is reverse, i.e. "100%-percent".
-     *
-     * @param {Number} value    Interpolated value between [duration, 0].
-     * 
-     * @return {Number}         Percentage value between [0, 100].
-     */
-    toPercent(value) {
-      return Math.round(100 * (1 - (value / this._duration)));
+    constructor(duration, instruction, circle) {
+      super(duration, instruction, circle);
+      this._label = 'Breathe in for';
+      this._from = '0vmin';
+      this._to = '100vmin';
     }
 }
   
 class HoldAnimator extends Animator {
-    constructor(label, duration, instruction, circle) {
-      super(label, duration, instruction, circle); 
-    }
-  
-    /**
-     * Converts the interpolated value to a percentage value.
-     *
-     * For the hold animation, we return a constant value of 100.
-     *
-     * @param {Number} value    Interpolated value between [duration, 0].
-     * 
-     * @return {Number}         Always returns a value of 100.
-     */
-    toPercent(value) {
-      return 100;
+    constructor(duration, instruction, circle) {
+      super(duration, instruction, circle);
+      this._label = 'Hold breath for';
+      this._from = '100vmin';
+      this._to = '100vmin';
     }
 }
   
 class OutAnimator extends Animator {
-    constructor(label, duration, instruction, circle) {
-      super(label, duration, instruction, circle); 
-    }
-  
-    /**
-     * Converts the interpolated value to a percentage value.
-     *
-     * @param {Number} value    Interpolated value between [duration, 0].
-     * 
-     * @return {Number}         Percentage value between [0, 100].
-     */
-    toPercent(value) {
-      return Math.round(100 * (value / this._duration));
+    constructor(duration, instruction, circle) {
+      super(duration, instruction, circle);
+      this._label = 'Breathe out for';
+      this._from = '100vmin';
+      this._to = '0vmin';
     }
 }

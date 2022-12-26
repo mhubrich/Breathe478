@@ -1,15 +1,18 @@
 /**
  * A Controller to manage the sequence and flow of animations (breathe in, hold, breathe out).
  *
- * Based on the value of `repeat`, the Controller calls the `start` function of the Animator
- * objects exactly `repeat` * `animators.length` times. The Controller cycles through the
- * Animators `repeat` times, i.e. the ordering of passed Animators is important.
+ * Based on the value of `repeat`, the `Controller` calls the `start` function of the `Animator`
+ * objects exactly `repeat` * `animators.length` times. The `Controller` cycles through the
+ * `Animator`'s `repeat` times, i.e. the ordering of passed `Animator`s is important.
+ * Note that the `Controller` does not have any knowledge of the implementation details of
+ * the `Animator` but solely controls the flow, i.e. it starts an `Animator` and after
+ * completion starts the next one.
  */
  class Controller {
 
     /**
-     * @param {Array}   animators   Array of Animator objects.
-     * @param {Number}  repeat      Number of times to cycle through all Animators.
+     * @param {Array}   animators   Array of `Animator` objects.
+     * @param {Number}  repeat      Number of times to cycle through all `animators`.
      */
     constructor(animators, repeat=3) {
       // Repeats the `animators` array exactly `repeat` times
@@ -21,7 +24,7 @@
     /**
      * Iterator to cycle through the animations.
      *
-     * The iterator pops the last item in the stack of Animators and calls their start function.
+     * The iterator pops the last item in the stack of `Animator`s and calls their start function.
      */
     next() {
       this._currentAnimator = this._animators.pop();

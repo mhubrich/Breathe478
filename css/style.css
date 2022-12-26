@@ -10,6 +10,14 @@
 html {
     background: var(--dark-primary);
     font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+/* Smaller font size on mobile devices */
+@media only screen and (orientation: portrait) {
+    html {
+        font-size: 10px;
+    }
 }
 
 .view {
@@ -21,7 +29,6 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1;
 }
 
 /* Initially, hide animation view */
@@ -45,7 +52,7 @@ html {
 #circle p {
     color: var(--light-primary);
     font-weight: lighter;
-    font-size: xxx-large;
+    font-size: 3rem;
 }
 
 /* Start button style */
@@ -63,7 +70,7 @@ html {
 .button a {
     position: relative;
     color: var(--light-secondary);
-    font-size: xx-large;
+    font-size: 2rem;
     font-weight: normal;
     letter-spacing: 1px;
     text-decoration: none;
@@ -102,7 +109,7 @@ html {
     left: 10px;
     color: var(--light-secondary);
     opacity: 0.5;
-    font-size: xxx-large;
+    font-size: 3rem;
     cursor: pointer;
 }
 

@@ -1,3 +1,7 @@
+html {
+    background: #142d4c;
+}
+
 .view {
     position: absolute;
     top: 0;
@@ -22,9 +26,14 @@
     justify-content: center;
     align-items: center;
     white-space: nowrap;
-    background: lightblue;
+    background: #9fd3c7; 
     border-radius: 50%;
     z-index: -1;
+}
+
+#circle p {
+    color: white;
+    font-size: xx-large;
 }
 
 #stop {

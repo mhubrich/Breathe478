@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --light-primary: #ececec;
+    --light-secondary: #9fd3c7;
+    --dark-primary: #142d4c;
+    --dark-secondary: #385170;
+}
+
 html {
-    background: #142d4c;
+    background: var(--dark-primary);
+    font-family: 'Roboto', sans-serif;
 }
 
 .view {
@@ -26,16 +36,64 @@ html {
     justify-content: center;
     align-items: center;
     white-space: nowrap;
-    background: #9fd3c7; 
+    background: var(--light-secondary);
     border-radius: 50%;
     z-index: -1;
 }
 
 #circle p {
-    color: white;
+    color: var(--light-primary);
     font-size: xx-large;
 }
 
+/* Start button style */
+.button {
+    position: relative;
+    padding: 10px 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--light-secondary);
+    overflow: hidden;
+    cursor: pointer;
+}
+  
+.button a {
+    position: relative;
+    color: var(--light-secondary);
+    font-size: 2em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .45s ease-Out;
+}
+
+#button-anim {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0%;
+    height: 0%;
+    border-radius: 50%;
+    background: var(--light-secondary);
+    opacity: 0;
+    transition: all .5s ease-Out;
+}
+
+.button:hover #button-anim {
+    top: -200%;
+    left: -50%;
+    width: 200%;
+    height: 500%;
+    opacity: 1;
+}
+
+.button:hover a {
+    color: var(--dark-primary);
+}
+
+/* Stop button style */
 #stop {
     position: absolute;
     top: 0;

@@ -46,23 +46,28 @@ html {
 /* Start button style */
 .button {
     position: relative;
-    padding: 10px 50px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 10px 50px;
     border: 2px solid var(--light-secondary);
-    overflow: hidden;
-    cursor: pointer;
-}
-  
-.button span {
-    position: relative;
+    background-color: var(--dark-primary);
     color: var(--light-secondary);
     font-weight: normal;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
+    overflow: hidden;
+    cursor: pointer;
     transition: all .45s ease-out;
+}
+
+.button span {
+    position: relative;
+}
+
+.button:hover {
+    color: var(--dark-primary);
 }
 
 #button-anim {
@@ -83,10 +88,6 @@ html {
     width: 200%;
     height: 500%;
     opacity: 1;
-}
-
-.button:hover span {
-    color: var(--dark-primary);
 }
 
 /* Stop button style */

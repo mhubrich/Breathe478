@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
 :root {
     --light-primary: #ececec;
     --light-secondary: #9fd3c7;
@@ -9,15 +7,6 @@
 
 html {
     background: var(--dark-primary);
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-}
-
-/* Smaller font size on mobile devices */
-@media only screen and (orientation: portrait) {
-    html {
-        font-size: 10px;
-    }
 }
 
 .view {
@@ -49,10 +38,9 @@ html {
 }
 
 /* Instruction to be animated */
-#circle p {
+#circle h1 {
     color: var(--light-primary);
     font-weight: lighter;
-    font-size: 3rem;
 }
 
 /* Start button style */
@@ -67,15 +55,14 @@ html {
     cursor: pointer;
 }
   
-.button a {
+.button span {
     position: relative;
     color: var(--light-secondary);
-    font-size: 2rem;
     font-weight: normal;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
-    transition: all .45s ease-Out;
+    transition: all .45s ease-out;
 }
 
 #button-anim {
@@ -87,7 +74,7 @@ html {
     border-radius: 50%;
     background: var(--light-secondary);
     opacity: 0;
-    transition: all .5s ease-Out;
+    transition: all .5s ease-out;
 }
 
 .button:hover #button-anim {
@@ -98,7 +85,7 @@ html {
     opacity: 1;
 }
 
-.button:hover a {
+.button:hover span {
     color: var(--dark-primary);
 }
 
@@ -107,12 +94,20 @@ html {
     position: absolute;
     top: 10px;
     left: 10px;
-    color: var(--light-secondary);
-    opacity: 0.5;
-    font-size: 3rem;
+    width: 2rem;
+    height: 2rem;
+    fill: var(--light-secondary);
     cursor: pointer;
 }
 
-#stop:hover {
+#stop #s1 {
+    opacity: 0.5;
+}
+
+#stop:hover #s2 {
     opacity: 1;
+}
+
+#stop #s2, #stop:hover #s1 {
+    opacity: 0;
 }

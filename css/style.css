@@ -1,3 +1,4 @@
+/* Color palette */
 :root {
     --light-primary: #ececec;
     --light-secondary: #9fd3c7;
@@ -9,6 +10,7 @@ html {
     background: var(--dark-primary);
 }
 
+/* Parent class for all views */
 .view {
     position: absolute;
     top: 0;
@@ -111,4 +113,17 @@ html {
 
 #stop #s2, #stop:hover #s1 {
     opacity: 0;
+}
+
+/* Form labels and sliders (range) */
+.form-label {
+    color: var(--light-primary);
+}
+
+.form-range {
+    background: var(--light-primary);    
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background: var(--light-secondary);    
 }

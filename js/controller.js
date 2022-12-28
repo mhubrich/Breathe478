@@ -14,10 +14,9 @@
      * @param {Array}   animators   Array of `Animator` objects.
      * @param {Number}  repeat      Number of times to cycle through all `animators`.
      */
-    constructor(animators, repeat=3) {
+    constructor(animators, repeat) {
       // Repeats the `animators` array exactly `repeat` times
       this._animators = Array(repeat).fill(animators).flat().reverse();
-      this._repeat = repeat;
       this._currentAnimator = undefined;
     }
   

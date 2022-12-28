@@ -20,3 +20,16 @@ function start(breatheIn=4, hold=7, breatheOut=8, repeat=3) {
     btn_stop.addEventListener('click', () => controller.stop());
     controller.start();
 }
+
+/**
+ * Updates a label on the landing page view.
+ *
+ * This function is being called from the sliders on the landing page.
+ * Every time the slider value changes, the corresponding label is updated.
+ *
+ * @param {String} id       ID of the label element.
+ * @param {String} text     String to set in the label element.
+ */
+function updateSliderLabel(id, text) {
+    document.getElementById(id).innerHTML = text;
+}

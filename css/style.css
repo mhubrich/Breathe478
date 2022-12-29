@@ -120,10 +120,19 @@ html {
     color: var(--light-primary);
 }
 
-.form-range {
-    background: var(--light-primary);    
+input[type=range]::-webkit-slider-runnable-track {
+    background: var(--light-primary);
 }
 
 input[type=range]::-webkit-slider-thumb {
-    background: var(--light-secondary);    
+    background: var(--light-secondary);
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+    background: var(--light-secondary);
+    box-shadow: 0 0 0 .25rem rgba(159, 211, 199, 0.5);
+}
+
+input[type=range]:active::-webkit-slider-thumb {
+    background: var(--light-primary);
 }

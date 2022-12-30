@@ -17,9 +17,9 @@
   <body>
     <!-- Landing page view -->
     <div class="view" id="landing">
-        <div style="display: flex; flex-direction: column;">
+        <div class="button-group">
             <!-- Start button -->
-            <button type="button" class="button" id="start"onclick="start(
+            <button type="button" class="btn btn-outline-primary btn-lg" id="start" onclick="start(
                     Number(document.getElementById('slider-in').value),
                     Number(document.getElementById('slider-hold').value),
                     Number(document.getElementById('slider-out').value),
@@ -29,7 +29,7 @@
             </button>
 
             <!-- Collapse containing labels+sliders to set animation duration and repetitions -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#settings"
+            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="collapse" data-bs-target="#settings"
                 aria-expanded="false" aria-controls="settings">Settings</button>
             <div class="collapse" id="settings">
                 <label for="slider-in" class="form-label" id="lbl-in">Breathe in: 4 sec</label>
@@ -45,6 +45,13 @@
                 <input type="range" class="form-range" min="1" max="10" value="3" id="slider-repeats"
                     oninput="updateSliderLabel('lbl-repeats', `Repetitions: ${this.value}`)">
             </div>
+
+            <!-- Collapse containing information on the 4-7-8 breathing technique -->
+            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="collapse" data-bs-target="#information"
+                aria-expanded="false" aria-controls="information">Information</button>
+            <p class="collapse" id="information">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quam nulla, bibendum fermentum semper quis, iaculis vitae magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Ut congue tellus magna, eu luctus risus congue nec. Praesent vitae orci eget odio sollicitudin tempor. Phasellus vel aliquam neque, nec euismod elit. Praesent maximus eros in orci mattis, sed ullamcorper nulla ultrices. Quisque cursus odio nec mauris tincidunt congue. Pellentesque vel ultricies arcu, eu feugiat mi.
+            </p>
         </div>
     </div>
 

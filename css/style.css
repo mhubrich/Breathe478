@@ -18,16 +18,18 @@ html {
     height: 100%;
     width: 100%;
     display: flex;
-    align-items: center; /* Needed ? */
+    align-items: center;
     justify-content: center;
 }
 
+/* Button positioning on landing page */
 .button-group {
+    position: absolute;
+    top: 33%;
+    width: 18rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 15rem;
-    height: 100vh;
 }
 
 #information {
@@ -61,7 +63,7 @@ html {
 
 /* Landing page button styles (start, settings, information) */
 .btn.btn-outline-primary {
-    margin-top: 1rem;
+    margin-bottom: 1rem;
     background-color: var(--dark-primary);
     border: 0.15rem solid var(--light-secondary);
     border-radius: 0;

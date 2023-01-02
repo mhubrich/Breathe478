@@ -16,21 +16,22 @@
 
   <body>
     <!-- Landing page view -->
-    <div class="view" id="landing">
+    <div id="landing">
+        <!-- Title -->
+        <h1 class="font-monospace"><span>4-8-7 Breathing</span></h1>
+
         <div class="button-group">
             <!-- Start button -->
-            <button type="button" class="btn btn-outline-primary btn-lg" id="start" onclick="start(
+            <button type="button" class="btn btn-outline-primary btn-lg" onclick="start(
                     Number(document.getElementById('slider-in').value),
                     Number(document.getElementById('slider-hold').value),
                     Number(document.getElementById('slider-out').value),
-                    Number(document.getElementById('slider-repeats').value))">
-                <div id="button-anim"></div>
-                <span>Start</span>
+                    Number(document.getElementById('slider-repeats').value))">Start</button>
             </button>
 
             <!-- Collapse containing labels+sliders to set animation duration and repetitions -->
-            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="collapse" data-bs-target="#settings"
-                aria-expanded="false" aria-controls="settings">Settings</button>
+            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="collapse"
+            data-bs-target="#settings" aria-expanded="false" aria-controls="settings">Settings</button>
             <div class="collapse" id="settings">
                 <label for="slider-in" class="form-label" id="lbl-in">Breathe in: 4 sec</label>
                 <input type="range" class="form-range" min="1" max="10" value="4" id="slider-in"
@@ -47,20 +48,21 @@
             </div>
 
             <!-- Collapse containing information on the 4-7-8 breathing technique -->
-            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="collapse" data-bs-target="#information"
-                aria-expanded="false" aria-controls="information">Information</button>
+            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="collapse"
+            data-bs-target="#information" aria-expanded="false" aria-controls="information">Information</button>
             <div class="collapse" id="information">
-                <p style="text-align: justify;">
-                    The 4-7-8 breathing technique is based on pranayama breathing exercises, an ancient yogic practice
-                    of controlling your breath. These types of mindful breathing exercises have been shown to have many
-                    benefits for stress reduction and relaxation. It's done in three simple steps:
+                <p>
+                    The 4-7-8 breathing technique is based on pranayama breathing exercises, an ancient yogic
+                    practice of controlling your breath. These types of mindful breathing exercises have been
+                    shown to have many benefits for stress reduction and relaxation.
+                    It's done in three simple steps:
                 </p>
-                <ul style="padding-left: 1rem;">
-                    <li>Inhale through your nose for <span style="font-weight:bold; color: #9fd3c7;">4</span> counts.</li>
-                    <li>Hold your breath for <span style="font-weight:bold; color: #9fd3c7;">7</span> counts.</li>
-                    <li>Exhale through your mouth for <span style="font-weight:bold; color: #9fd3c7;">8</span> counts.</li>
+                <ul>
+                    <li>Inhale through your nose for <span>4</span> counts.</li>
+                    <li>Hold your breath for <span>7</span> counts.</li>
+                    <li>Exhale through your mouth for <span>8</span> counts.</li>
                 </ul>
-                <p style="text-align: justify;">
+                <p>
                     For more information, see
                     <a href="https://health.clevelandclinic.org/4-7-8-breathing/" target="_blank">here</a>.
                 </p>
@@ -70,20 +72,23 @@
 
 
     <!-- Animation view -->
-    <div class="view" id="animation">
+    <div id="animation">
         <!-- Closing button -->
         <svg id="stop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <!-- Two icons, id=s1: close, id=s2: close-filled -->
             <path id="s1" d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path id="s1" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-            <path id="s2" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            <path id="s1" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707
+                8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646
+                5.354a.5.5 0 0 1 0-.708z"/>
+            <path id="s2" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293
+                8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707
+                8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
         </svg>
         <!-- Circle that is being animated and the heading containg text instructions -->
         <div id="circle">
             <h1 id="instruction"></h1>
         </div>
     </div>
-
 
     <!-- Script imports -->
     <script src="./js/animator.js"></script>

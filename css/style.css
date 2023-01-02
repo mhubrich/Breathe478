@@ -6,30 +6,45 @@
     --dark-secondary: #385170;
 }
 
-html {
+html, body {
     background: var(--dark-primary);
 }
 
-/* Parent class for all views */
-.view {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Landing page view */
+#landing {
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: var(--dark-primary);
+}
+
+/* Title positioning */
+#landing h1 {
+    padding-top: 10%;
+    padding-bottom: 7%;
+}
+
+/* Title styling */
+#landing h1 span {
+    padding: 0.5rem;
+    background-color: var(--light-secondary);
+    color: var(--dark-primary);
+    letter-spacing: 0.1rem;
 }
 
 /* Button positioning on landing page */
 .button-group {
-    position: absolute;
-    top: 33%;
     width: 18rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+#settings {
+    padding-bottom: 0.5rem;
 }
 
 #information {
@@ -38,9 +53,29 @@ html {
     font-size: smaller;
 }
 
-/* Initially, hide animation view */
+#information p {
+    text-align: justify;
+}
+
+#information ul {
+    padding-left: 1rem;
+}
+
+#information span {
+    font-weight:bold;
+    color: var(--light-secondary);
+}
+
+/* Animation view */
 #animation {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none; /* Initially, hide animation view */
+    align-items: center;
+    justify-content: center;
 }
 
 /* Circle to be animated */

@@ -52,10 +52,10 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 
 ## Author
 
-👨‍💻 [Markus Hubrich](https://github.com/mhubrich)
-📧 [info@markushubrich.me](mailto:info@markushubrich.me)
-🌐 [markushubrich.me](http://markushubrich.me)
-🗒️ [linkedin.com/in/markus-hubrich](www.linkedin.com/in/markus-hubrich)
+* 👨‍💻 [Markus Hubrich](https://github.com/mhubrich)
+* 📧 [info@markushubrich.me](mailto:info@markushubrich.me)
+* 🌐 [markushubrich.me](http://markushubrich.me)
+* 🗒️ [linkedin.com/in/markus-hubrich](https://www.linkedin.com/in/markus-hubrich)
 
 ## Acknowledgments
 

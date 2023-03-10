@@ -1,6 +1,6 @@
 # Breathe 478
 
-[![Breathe 478 Web App][product-screenshot]](http://markushubrich.me/breathe478/)
+[![Breathe 478 Web App][product-screenshot]](https://markushubrich.me/breathe478/)
 
 _Breathe in for **4** - hold for **7** - breathe out for **8**_
 
@@ -32,7 +32,7 @@ To get a local copy simply clone this repository: `git clone https://github.com/
 
 ### Live Version
 
-Visit the live version at: [markushubrich.me/breathe478](http://markushubrich.me/breathe478/)
+Visit the live version at: [markushubrich.me/breathe478](https://markushubrich.me/breathe478/)
 
 ## Contributing
 
@@ -54,7 +54,7 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 
 * 👨‍💻 [Markus Hubrich](https://github.com/mhubrich)
 * 📧 [info@markushubrich.me](mailto:info@markushubrich.me)
-* 🌐 [markushubrich.me](http://markushubrich.me)
+* 🌐 [markushubrich.me](https://markushubrich.me)
 * 🗒️ [linkedin.com/in/markus-hubrich](https://www.linkedin.com/in/markus-hubrich)
 
 ## Acknowledgments
@@ -64,7 +64,7 @@ Shout-out to [Othneil Drew](https://github.com/othneildrew) for creating the [Be
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: images/screenshot.gif
+[product-screenshot]: images/demo.gif
 [HTML.com]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
 [HTML-url]: https://html.spec.whatwg.org/multipage/
 [CSS.com]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
